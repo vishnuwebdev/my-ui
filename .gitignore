@@ -37,3 +37,6 @@ coverage/
 *.njsproj
 *.sln
 *.sw?
+
+# Rollup Files
+bundle-stats.html
