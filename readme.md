@@ -6,13 +6,13 @@ A **modular, reusable React UI component library** built with **TypeScript**, **
 
 ## 🚀 Key Features
 
-- Reusable React components (Button, Input, Card, etc.)  
-- TypeScript support with full IntelliSense and `.d.ts` type definitions  
-- TailwindCSS integration for flexible styling  
-- Storybook documentation for interactive component previews  
-- Unit & snapshot tests with code coverage  
-- Tree-shakable imports for optimized bundle size  
-- Ready to publish as an npm package  
+- Reusable React components (Button, Input, Card, etc.)
+- TypeScript support with full IntelliSense and `.d.ts` type definitions
+- TailwindCSS integration for flexible styling
+- Storybook documentation for interactive component previews
+- Unit & snapshot tests with code coverage
+- Tree-shakable imports for optimized bundle size
+- Ready to publish as an npm package
 
 ---
 
@@ -21,13 +21,13 @@ A **modular, reusable React UI component library** built with **TypeScript**, **
 Install via npm:
 
 ```bash
-npm install my-ui-library
+npm install my-ui
 ```
 
 Or using yarn:
 
 ```bash
-yarn add my-ui-library
+yarn add my-ui
 ```
 
 ---
@@ -36,32 +36,36 @@ yarn add my-ui-library
 
 ```tsx
 import React from "react";
-import { Button } from "my-ui-library/components/Button";
+import { Button } from "my-ui/components/Button";
 
 export const App = () => (
   <div>
-    <Button variant="primary" size="md">Primary Button</Button>
-    <Button variant="secondary" size="sm">Secondary Button</Button>
+    <Button variant="primary" size="md">
+      Primary Button
+    </Button>
+    <Button variant="secondary" size="sm">
+      Secondary Button
+    </Button>
   </div>
 );
 ```
 
 - Supports props like:
-  - `variant`: `"primary" | "secondary" | "danger"`  
-  - `size`: `"sm" | "md" | "lg"`  
-  - `disabled`: `boolean`  
+  - `variant`: `"primary" | "secondary" | "danger"`
+  - `size`: `"sm" | "md" | "lg"`
+  - `disabled`: `boolean`
 
 ---
 
 ## 📖 Storybook Documentation
 
-View interactive component previews and auto-generated docs:  
+View interactive component previews and auto-generated docs:
 
-[Storybook Docs](https://<username>.github.io/my-ui-library)  
+[Storybook Docs](https://<username>.github.io/my-ui)
 
-- Shows all component variations  
-- Allows interactive prop controls  
-- Auto-generated props table and usage examples  
+- Shows all component variations
+- Allows interactive prop controls
+- Auto-generated props table and usage examples
 
 ---
 
@@ -75,7 +79,7 @@ npm run test:ci      # Single run for CI/CD
 npm run coverage     # Generate code coverage
 ```
 
-- Coverage report will be available in `coverage/lcov-report/index.html`  
+- Coverage report will be available in `coverage/lcov-report/index.html`
 - Open the HTML file in browser for a **visual coverage report**
 
 ---
@@ -88,9 +92,9 @@ Start Storybook for local development:
 npm run storybook
 ```
 
-- Runs Storybook on `http://localhost:6006`  
-- Add new components under `src/components/`  
-- Add stories for each component in `.stories.tsx`  
+- Runs Storybook on `http://localhost:6006`
+- Add new components under `src/components/`
+- Add stories for each component in `.stories.tsx`
 
 ---
 
@@ -116,14 +120,13 @@ coverage/       # Test coverage reports
 
 ## 📝 Contribution
 
-- Fork the repo  
-- Create a feature branch: `git checkout -b feature/my-component`  
-- Add your component + story + test  
-- Submit a pull request  
+- Fork the repo
+- Create a feature branch: `git checkout -b feature/my-component`
+- Add your component + story + test
+- Submit a pull request
 
 ---
 
 ## 📄 License
 
 This project is licensed under the **MIT License**.
-
