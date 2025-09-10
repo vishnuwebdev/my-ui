@@ -1,38 +1,69 @@
-import React from "react";
-
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "danger";
-  size?: "sm" | "md" | "lg";
-}
+import React, { useRef } from "react";
+import { Loader } from "./Loader";
+import { handleRipple } from "./Ripple";
+import {
+  variantStyles,
+  sizeStyles,
+  circleSizeStyles,
+  shapeStyles,
+  widthStyles,
+} from "./Button.styles";
+import { ButtonProps } from "./Button.types";
 
 export const Button: React.FC<ButtonProps> = ({
   children,
+  title,
   variant = "primary",
   size = "md",
+  color,
+  width = "fixed",
+  ripple = true,
+  loading = false,
+  loadingText,
+  className = "",
+  loaderColor,
+  shape = "rounded",
+  style,
   ...props
 }) => {
-  const baseStyles =
-    "rounded font-medium focus:outline-none focus:ring transition-colors duration-200";
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const variantStyles: Record<string, string> = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700",
-    secondary: "bg-gray-200 text-gray-800 hover:bg-gray-300",
-    danger: "bg-red-600 text-white hover:bg-red-700",
-  };
+  if (!children && !title && !loading) return null;
 
-  const sizeStyles: Record<string, string> = {
-    sm: "px-2 py-1 text-sm",
-    md: "px-4 py-2 text-base",
-    lg: "px-6 py-3 text-lg",
-  };
+  const finalSize =
+    shape === "circle" ? circleSizeStyles[size] : sizeStyles[size];
 
   return (
     <button
-      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]}`}
+      ref={buttonRef}
+      disabled={loading || props.disabled}
+      className={`
+        font-medium focus:outline-none focus:ring transition-colors duration-200 
+        relative overflow-hidden cursor-pointer 
+        active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed
+        ${color || variantStyles[variant]} ${finalSize} ${widthStyles[width]} ${
+        shapeStyles[shape]
+      } ${className}
+      `}
+      style={{
+        ...style,
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
+      }}
+      onClick={(e) => {
+        if (!loading && ripple && buttonRef.current) {
+          handleRipple(e, buttonRef.current, props.disabled || false);
+          props.onClick?.(e);
+        }
+      }}
       {...props}
     >
-      {children}
+      {loading ? (
+        <Loader color={loaderColor || "currentColor"} text={loadingText} />
+      ) : (
+        title || children
+      )}
     </button>
   );
 };
