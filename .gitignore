@@ -1,7 +1,7 @@
 # Node dependencies
 node_modules/
 package-lock.json
-yarn.lock
+# yarn.lock
 
 # Build outputs
 dist/
