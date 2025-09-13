@@ -1,25 +1,19 @@
-import React from "react";
+import type React from 'react';
 
 // Variants
-export type ButtonVariant =
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "bordered"
-  | "outline";
+export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'bordered' | 'outline';
 
 // Sizes
-export type ButtonSize = "sm" | "md" | "lg";
+export type ButtonSize = 'sm' | 'md' | 'lg';
 
 // Shapes
-export type ButtonShape = "rounded" | "pill" | "circle" | "square";
+export type ButtonShape = 'rounded' | 'pill' | 'circle' | 'square';
 
 // Width control
-export type ButtonWidth = "fixed" | "free" | "full";
+export type ButtonWidth = 'fixed' | 'free' | 'full';
 
 // Props
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   loaderColor?: string;

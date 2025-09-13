@@ -1,28 +1,28 @@
-import React, { useRef } from "react";
-import { Loader } from "./Loader";
-import { handleRipple } from "./Ripple";
+import React, { useRef } from 'react';
 import {
-  variantStyles,
-  sizeStyles,
   circleSizeStyles,
   shapeStyles,
+  sizeStyles,
+  variantStyles,
   widthStyles,
-} from "./Button.styles";
-import { ButtonProps } from "./Button.types";
+} from './Button.styles';
+import type { ButtonProps } from './Button.types';
+import { Loader } from './Loader';
+import { handleRipple } from './Ripple';
 
 export const Button: React.FC<ButtonProps> = ({
   children,
   title,
-  variant = "primary",
-  size = "md",
+  variant = 'primary',
+  size = 'md',
   color,
-  width = "fixed",
+  width = 'fixed',
   ripple = true,
   loading = false,
   loadingText,
-  className = "",
+  className = '',
   loaderColor,
-  shape = "rounded",
+  shape = 'rounded',
   style,
   ...props
 }) => {
@@ -30,8 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   if (!children && !title && !loading) return null;
 
-  const finalSize =
-    shape === "circle" ? circleSizeStyles[size] : sizeStyles[size];
+  const finalSize = shape === 'circle' ? circleSizeStyles[size] : sizeStyles[size];
 
   return (
     <button
@@ -42,16 +41,16 @@ export const Button: React.FC<ButtonProps> = ({
         relative overflow-hidden cursor-pointer 
         active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed
         ${color || variantStyles[variant]} ${finalSize} ${widthStyles[width]} ${
-        shapeStyles[shape]
-      } ${className}
+          shapeStyles[shape]
+        } ${className}
       `}
       style={{
         ...style,
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        whiteSpace: "nowrap",
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
       }}
-      onClick={(e) => {
+      onClick={e => {
         if (!loading && ripple && buttonRef.current) {
           handleRipple(e, buttonRef.current, props.disabled || false);
           props.onClick?.(e);
@@ -60,7 +59,7 @@ export const Button: React.FC<ButtonProps> = ({
       {...props}
     >
       {loading ? (
-        <Loader color={loaderColor || "currentColor"} text={loadingText} />
+        <Loader color={loaderColor || 'currentColor'} text={loadingText ?? ''} />
       ) : (
         title || children
       )}
